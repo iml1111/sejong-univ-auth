@@ -1,4 +1,4 @@
-from .sejong_auth import SejongAuth
+
 
 
 __AUTHOR__ = "IML"
