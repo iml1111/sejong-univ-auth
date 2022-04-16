@@ -6,4 +6,4 @@ USER_AGENT = (
     "Firefox/66.0"
 )
 
-TIMEOUT_SEC = 2
+TIMEOUT_SEC = 3
