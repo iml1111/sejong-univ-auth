@@ -1,6 +1,8 @@
 # sejong-univ-auth
 Sejong University Member Account Authentication
 
+세종대학교 구성원들을 위한 쉽고 간편한 인증 라이브러리
+
 # How to Use
 ## Local
 ```{.python}

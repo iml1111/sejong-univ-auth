@@ -1,3 +1,7 @@
+"""
+과거에는 동작했으나 현재는 동작하지 않는 모듈들...
+"""
+
 import requests
 from bs4 import BeautifulSoup as bs
 import getpass
@@ -7,6 +11,7 @@ header = {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5)\
             "Accept":"text/html,application/xhtml+xml,application/xml;\
             q=0.9,imgwebp,*/*;q=0.8"}
 TIMEOUT_SEC = 3
+
 
 def dosejong_api(id, pw):
     data = {
@@ -28,25 +33,6 @@ def dosejong_api(id, pw):
             "id":id,
             "major":major
         }
-
-def sjlms_api(id, pw):
-    # 현재 작동하지 않음
-    data = {"username":id, "password":pw, "rememberusername":"1"}
-    with requests.Session() as s:
-        page = s.post("http://sjulms.moodler.kr/login/index.php", 
-            headers = header, data = data, timeout=TIMEOUT_SEC)
-        soup = bs(page.text, "html.parser")
-        if soup.find("h4") is None:
-            return {"result":False}
-        else:
-            name = soup.find("h4").get_text()
-            major = soup.find("p",{"class":"department"}).get_text()
-            return {
-            "result":True,
-            "name":name,
-            "id":id,
-            "major":major
-            }
 
 
 
@@ -78,6 +64,27 @@ def uis_api(id, pw):
             "id":id,
             "major":"none"
         }
+
+
+def sjlms_api(id, pw):
+    # 현재 작동하지 않음
+    data = {"username":id, "password":pw, "rememberusername":"1"}
+    with requests.Session() as s:
+        page = s.post("http://sjulms.moodler.kr/login/index.php", 
+            headers = header, data = data, timeout=TIMEOUT_SEC)
+        soup = bs(page.text, "html.parser")
+        if soup.find("h4") is None:
+            return {"result":False}
+        else:
+            name = soup.find("h4").get_text()
+            major = soup.find("p",{"class":"department"}).get_text()
+            return {
+            "result":True,
+            "name":name,
+            "id":id,
+            "major":major
+            }
+
 
 
 if __name__ == '__main__':
