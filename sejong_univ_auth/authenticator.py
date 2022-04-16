@@ -82,7 +82,6 @@ class DosejongSession(Authenticator):
 
     def authenticate(self, id: str, password: str) -> AuthResponse:
         response = self._session_request(id, password)
-        print()
         if response.status_code == 200:
             soup = bs(response.text, 'html.parser')
             soup = soup.select('div.info')
@@ -116,3 +115,6 @@ class DosejongSession(Authenticator):
                 return s.get('https://do.sejong.ac.kr/')
         except Timeout:
             return FailedResponse(500, {})
+
+
+AUTHENTICATORS = (PortalSSOToken, DosejongSession)
