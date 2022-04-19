@@ -1,9 +1,10 @@
+import requests, bs4
 from .auth import auth
 from .method import (
     METHODS,
     Manual,
     PortalSSOToken,
-    DosejongSession
+    DosejongSession,
 )
 
 
