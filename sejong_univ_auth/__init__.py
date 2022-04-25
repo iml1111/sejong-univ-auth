@@ -1,3 +1,7 @@
+"""
+Sejong-Univ-Auth
+"""
+
 import requests, bs4
 from .auth import auth
 from .method import (

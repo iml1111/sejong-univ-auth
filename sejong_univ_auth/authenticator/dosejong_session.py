@@ -1,3 +1,4 @@
+"""Dosejong 세션을 통한 로그인 검증"""
 import requests
 from requests.exceptions import Timeout
 from bs4 import BeautifulSoup as bs

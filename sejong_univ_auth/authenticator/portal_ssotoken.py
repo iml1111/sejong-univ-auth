@@ -1,10 +1,10 @@
+"""Portal to BlackBoard ssotoken 생성 유무 검증"""
 import re
 from sejong_univ_auth.authenticator import Authenticator, AuthResponse
 from sejong_univ_auth.decorator import header
 
 
 class PortalSSOToken(Authenticator):
-    """Portal to BlackBoard ssotoken 생성 유무 검증"""
 
     @header('Referer', "https://portal.sejong.ac.kr")
     def authenticate(self, id: str, password: str) ->AuthResponse:

@@ -1,3 +1,6 @@
+"""
+Main Module
+"""
 from typing import Type, Optional, Union, List, Tuple
 from .method import Manual
 from .authenticator import Authenticator, AuthResponse
