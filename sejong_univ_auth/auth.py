@@ -34,7 +34,7 @@ def auth(
         failed_responses = []
         for method in methods:
             response: AuthResponse = method().authenticate(id, password)
-            if response.is_auth:
+            if response.is_auth or response.success:
                 return response
             failed_responses.append(response)
         return failed_responses

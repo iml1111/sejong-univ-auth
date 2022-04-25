@@ -18,7 +18,6 @@ class PortalSSOToken(Authenticator):
             }
         )
         if response.status_code == 200:
-
             ssotoken_exists = 'ssotoken' in response.headers.get('Set-Cookie', '')
             res_result = self._get_response_result(response.text)
 
