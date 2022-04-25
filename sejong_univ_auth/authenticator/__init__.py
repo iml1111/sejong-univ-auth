@@ -53,17 +53,34 @@ class Authenticator(metaclass=ABCMeta):
         )
 
     def _auth_failed(
-        self, *, body=None, status_code=200
+        self, *, body=None,
+        status_code=200, prefix_code='',
     ):
         return AuthResponse(
             success=True,
             is_auth=False,
             status_code=status_code,
-            code='auth_failed',
+            code=prefix_code + "_auth_failed" if prefix_code else 'auth_failed',
             body=body or {
                     'message': (
                         '계정 정보가 잘못되었거나, '
                         '인증 포맷 자체에 문제가 있습니다.')
+                },
+            authenticator=self.__class__
+        )
+
+    def _unknown_issue(
+        self, *, body=None, status_code=200,
+    ):
+        return AuthResponse(
+            success=True,
+            is_auth=False,
+            status_code=status_code,
+            code='unknown_issue',
+            body=body or {
+                    'message': (
+                        '예상된 포맷과 다릅니다. 관리자에게 문의해주세요!'
+                        '[https://github.com/iml1111/sejong-univ-auth/issues]')
                 },
             authenticator=self.__class__
         )
