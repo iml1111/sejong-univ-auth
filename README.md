@@ -110,3 +110,8 @@ AuthResponse(
   - Value: dict
 - **authenticator: 해당 인증에 사용된 Authenticator 클래스**
 
+
+
+# References
+
+- https://pypi.org/project/sejong-univ-auth/
