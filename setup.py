@@ -21,7 +21,7 @@ setup(
     author_email='shin10256@gmail.com',
     license='MIT',
     keywords='sejong univ auth',
-    packages=['sejong-univ-auth'],
+    packages=['sejong_univ_auth', 'sejong_univ_auth.authenticator'],
     install_requires=['requests', 'bs4'],
     platforms='any',
     classifiers=[
