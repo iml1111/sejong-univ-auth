@@ -1,29 +1,27 @@
-# sejong-univ-auth
-Sejong University Member Account Authentication
+# sejong-univ-auth ![Python versions](https://img.shields.io/badge/Python-3.6<=@-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Release](https://img.shields.io/badge/release-0.1.1-red)
+**Sejong University Member Account Authentication**
 
-세종대학교 구성원들을 위한 쉽고 간편한 인증 라이브러리
+세종대학교 구성원인지 확인하기 위한 간편한 인증 라이브러리
 
-# How to Use
-## Local
-```{.python}
-$ python sj_auth.py
-$ 학교 아이디: <학번 입력>
-$ 비밀번호: <비밀번호 입력>
 
-//do.sejong.ac.kr Crawling
-{'result': True, 'name': '김희재', 'id': '16011229', 'major': '컴퓨터공학과'}
 
-//sjulms.moodler.kr Crawling
-{'result': True, 'name': '김희재', 'id': '16011229', 'major': '컴퓨터공학과'}
-...
+## Easy to install
+
+**Pip**: `pip install sejong-univ-auth`
+
+**Direct:**
+
+- `git clone https://github.com/iml1111/sejong-univ-auth`
+- `python setup.py install`
+
+
+
+## Easy to use
+
+```python
+>>> from sejong_univ_auth import auth
+>>> result = auth(id='16011089', password='<your-password>')
+>>> result.is_auth
+True
 ```
-## Python Import
-```{.python}
->>> from sj_auth import dosejong_api, sjlms_api
->>> dosejong_api(id,pw)
-{'result': True, 'name': '김희재', 'id': '16011229', 'major': '컴퓨터공학과'}
->>> sjlms_api(id,pw)
-{'result': True, 'name': '김희재', 'id': '16011229', 'major': '컴퓨터공학과'}
->>> uis_api(id,pw)
-{'result': True, 'name': '김희재', 'id': '16011229', 'major': 'none'}
-```
+
