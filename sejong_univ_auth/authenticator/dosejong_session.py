@@ -13,7 +13,7 @@ class DosejongSession(Authenticator):
             soup = bs(response.text, 'html.parser')
             soup = soup.select('div.info')
             if not soup:
-                return self._auth_failed()
+                return self._auth_failed(is_auth=False)
             return self._success(
                 body={
                     'name': soup[0].find('b').get_text().strip(),

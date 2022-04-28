@@ -29,11 +29,13 @@ class PortalSSOToken(Authenticator):
             else:
                 if res_result in ('erridpwd', 'Error'):
                     return self._auth_failed(
+                        is_auth=False,
                         prefix_code=res_result,
                         body={'message': '아이디 및 비밀번호가 일치하지 않습니다.'}
                     )
                 elif res_result == 'pwsNeedChg':
                     return self._auth_failed(
+                        is_auth=False,
                         prefix_code=res_result,
                         body={'message': '일정 횟수 이상 패스워드를 잘못 입력하여 계정이 잠겼습니다.'}
                     )
@@ -44,6 +46,7 @@ class PortalSSOToken(Authenticator):
                     )
                 elif res_result == 'invalid':
                     return self._auth_failed(
+                        is_auth=False,
                         prefix_code=res_result,
                         body={'message': '제한된 아이디입니다.'},
                     )

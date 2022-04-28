@@ -6,3 +6,4 @@ idna
 requests
 soupsieve
 urllib3
+python-dotenv
