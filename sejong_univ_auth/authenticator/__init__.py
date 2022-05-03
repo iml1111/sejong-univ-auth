@@ -120,6 +120,11 @@ class Authenticator(metaclass=ABCMeta):
 # Custom Authenticators
 from .portal_ssotoken import PortalSSOToken
 from .dosejong_session import DosejongSession
+from .moodler_session import MoodlerSession
 
 
-AUTHENTICATORS = (PortalSSOToken, DosejongSession)
+AUTHENTICATORS = (
+    PortalSSOToken,
+    DosejongSession,
+    MoodlerSession
+)

@@ -1,5 +1,9 @@
 import unittest, os
-from sejong_univ_auth import PortalSSOToken, DosejongSession
+from sejong_univ_auth import (
+    PortalSSOToken,
+    DosejongSession,
+    MoodlerSession
+)
 from sejong_univ_auth.authenticator import Authenticator
 
 
@@ -26,6 +30,17 @@ class AuthenticatorTestCase(unittest.TestCase):
     def test_dosejong_session(self):
         """DosejongSession Authenticator 테스트"""
         module: Authenticator = DosejongSession()
+        # correct case
+        res = module.authenticate(id=self.id, password=self.pw)
+        self.assertTrue(res.is_auth)
+        # incorrect case
+        res = module.authenticate(id='wrong', password='wrong')
+        self.assertFalse(res.is_auth)
+        self.assertEqual(res.code, 'auth_failed')
+
+    def test_moodler_session(self):
+        """MoodlerSession Authenticator 테스트"""
+        module: Authenticator = MoodlerSession()
         # correct case
         res = module.authenticate(id=self.id, password=self.pw)
         self.assertTrue(res.is_auth)

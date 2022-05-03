@@ -1,7 +1,12 @@
 from .authenticator import (
-    Authenticator, AUTHENTICATORS,
-    PortalSSOToken, DosejongSession,
+    Authenticator,
+    AUTHENTICATORS,
     AuthResponse
+)
+from .authenticator import (
+    PortalSSOToken,
+    DosejongSession,
+    MoodlerSession,
 )
 
 

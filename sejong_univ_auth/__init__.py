@@ -9,6 +9,7 @@ from .method import (
     Manual,
     PortalSSOToken,
     DosejongSession,
+    MoodlerSession,
 )
 
 
