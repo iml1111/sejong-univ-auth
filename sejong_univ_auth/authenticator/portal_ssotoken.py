@@ -1,12 +1,14 @@
 """Portal to BlackBoard ssotoken 생성 유무 검증"""
 import re
+
 from sejong_univ_auth.authenticator import Authenticator, AuthResponse
-from sejong_univ_auth.decorator import header
+from sejong_univ_auth.decorator import header, timeout_handler
 
 
 class PortalSSOToken(Authenticator):
 
     @header('Referer', "https://portal.sejong.ac.kr")
+    @timeout_handler
     def authenticate(self, id: str, password: str) ->AuthResponse:
         response = self.request(
             url='https://portal.sejong.ac.kr/jsp/login/login_action.jsp',
@@ -17,6 +19,7 @@ class PortalSSOToken(Authenticator):
                 'password': password,
             }
         )
+
         if response.status_code == 200:
             ssotoken_exists = 'ssotoken' in response.headers.get('Set-Cookie', '')
             res_result = self._get_response_result(response.text)
@@ -55,7 +58,9 @@ class PortalSSOToken(Authenticator):
                 else: # result를 추출할 수 없음.
                     return self._unknown_issue()
         else:
-            return self._unknown_server_error(status_code=response.status_code)
+            return self._unknown_server_error(
+                status_code=response.status_code
+            )
 
     @staticmethod
     def _get_response_result(response_text: str):
