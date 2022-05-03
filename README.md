@@ -3,9 +3,9 @@
 
 세종대학교 구성원인지 확인하기 위한 간편한 인증 라이브러리입니다.
 
-Python이라면 아래와 같은 방법으로 쉽게 구현해보세요!
+**Python**이라면 아래와 같은 방법으로 쉽게 구현해보세요!
 
-혹시 다른 언어를 사용하시나요? 그렇다면 [저희들이 직접 개발한 REST API](https://github.com/iml1111/sejong-univ-auth#sejong-auth-api)를 사용해보세요!
+혹시 **다른 언어**를 사용하시나요? 그렇다면 [저희들이 직접 개발한 REST API](https://github.com/iml1111/sejong-univ-auth#sejong-auth-api)를 사용해보세요!
 
 ## Easy to install
 
