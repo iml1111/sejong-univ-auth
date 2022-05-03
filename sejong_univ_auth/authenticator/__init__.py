@@ -52,7 +52,7 @@ class Authenticator(metaclass=ABCMeta):
             status_code=status_code,
             code='success',
             body=body or {},
-            authenticator=self.__class__
+            authenticator=self.__class__.__name__
         )
 
     def _auth_failed(
@@ -72,7 +72,7 @@ class Authenticator(metaclass=ABCMeta):
                         '계정 정보가 잘못되었거나, '
                         '인증 포맷 자체에 문제가 있습니다.')
                 },
-            authenticator=self.__class__
+            authenticator=self.__class__.__name__
         )
 
     def _unknown_issue(
@@ -88,7 +88,7 @@ class Authenticator(metaclass=ABCMeta):
                         '예상된 포맷과 다릅니다. 관리자에게 문의해주세요!'
                         '[https://github.com/iml1111/sejong-univ-auth/issues]')
                 },
-            authenticator=self.__class__
+            authenticator=self.__class__.__name__
         )
 
     def _unknown_server_error(
@@ -104,7 +104,7 @@ class Authenticator(metaclass=ABCMeta):
                     '인증 서버가 정상적인 결과가 반환하지 않아, '
                     '결과를 조회할 수 없습니다.')
             },
-            authenticator=self.__class__
+            authenticator=self.__class__.__name__
         )
 
     def _timeout(self):
@@ -114,7 +114,7 @@ class Authenticator(metaclass=ABCMeta):
             status_code=None,
             code='timeout',
             body={'message': 'Timeout Exception Occured.'},
-            authenticator=self.__class__
+            authenticator=self.__class__.__name__
         )
 
 # Custom Authenticators
