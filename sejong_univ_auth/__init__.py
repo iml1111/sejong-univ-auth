@@ -10,6 +10,7 @@ from .method import (
     PortalSSOToken,
     DosejongSession,
     MoodlerSession,
+    ClassicSession,
 )
 
 
