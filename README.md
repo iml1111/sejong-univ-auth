@@ -1,9 +1,11 @@
-# sejong-univ-auth ![Python versions](https://img.shields.io/badge/Python-3.7-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Release](https://img.shields.io/badge/release-0.1.1-red)
+# sejong-univ-auth ![Python versions](https://img.shields.io/badge/Python-3.7-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Release](https://img.shields.io/badge/release-0.2.2-red)
 **Sejong University Member Account Authentication**
 
-세종대학교 구성원인지 확인하기 위한 간편한 인증 라이브러리
+세종대학교 구성원인지 확인하기 위한 간편한 인증 라이브러리입니다.
 
+Python이라면 아래와 같은 방법으로 쉽게 구현해보세요!
 
+혹시 다른 언어를 사용하시나요? 그렇다면 [저희들이 직접 개발한 REST API](#Sejong Auth API)를 사용해보세요!
 
 ## Easy to install
 
@@ -44,18 +46,34 @@ def auth(id: str, password: str, methods: Authenticator)
 ### Methods
 
 현재 사용가능한 인증 방식(Method)은 아래와 같습니다.
+```python
+from sejong_univ_auth import (
+    Manual,
+    PortalSSOToken,
+    DosejongSession,
+    MoodlerSession,
+    ClassicSession
+)
+```
 
 - **PortalSSOToken**
-
-​		세종대학교 포탈 사이트의 ssotoken 유무를 통해 인증 결과를 확인합니다.
+  - 세종대학교 포탈 사이트의 인증 방식입니다.
 
 - **DosejongSession**
+  - dosejong 사이트의 세션 인증 방식입니다.
+  - 이름 및 학번을 추가로 조회할 수 있습니다.
 
-  dosejong 사이트의 세션 정보를 유지하여, 사용자의 이름/학번 등의 scraping을 시도하여 인증 유무를 확인합니다. 따라서 해당 메소드의 경우, 인증에 성공할 경우 해당 아이디의 이름 및 학번을 함께 조회할 수 있습니다.
+- **ClassicSession**
+  - 대양휴머니티칼리지 사이트의 세션 인증 방식입니다.
+  - 이름, 학번, 학년, 재학상태를 추가로 조회할 수 있습니다.
 
-- **Manual**
+- **MoodlerSession**
+  - SJULMS 사이트의 세션 인증 방식입니다.
+  - 이름 및 학번을 추가로 조회할 수 있습니다.
 
-​		현재 구현된 모든 메소드를 순서대로 수행합니다.
+- **Manual (default)**
+  - 현재 구현된 모든 메소드를 평균 실행 속도가 빠른 순서대로 수행합니다.
+  - 인증 성공 및 id/pw 불일치로 인한 인증 실패가 반환될 때가지 순차적으로 실행합니다.
 
 메소드를 직접 지정하는 경우, 아래와 같이 사용할 수 있습니다.
 
@@ -64,11 +82,13 @@ def auth(id: str, password: str, methods: Authenticator)
 >>> auth(id='<your-id>', password='<your-pw>', methods=PortalSSOToken)
 >>> auth(id='<your-id>', password='<your-pw>', methods=DosejongSession)
 ...
-# same to default
+# 복수의 Authenticator를 순차적으로 수행할 경우
 >>> auth(id='<your-id>', password='<your-pw>', methods=[PortalSSOToken, DosejongSession])
 ```
 
-복수의 Authenticator를 list(혹은 tuple) 형태로 주게 될 경우, 순차적으로 메소드를 수행합니다. 만약 현재의 메소드에서 현재 인증이 불가능한(Internel Sever Error 등의) 상황일 경우, 바로 다음 메소드로 시프트하여 인증을 진행합니다.
+복수의 Authenticator를 list(혹은 tuple) 형태로 주게 될 경우, 순차적으로 메소드를 수행합니다. 
+
+만약 현재의 메소드에서 현재 인증이 불가능한(Internel Sever Error 등의) 상황일 경우, 바로 다음 메소드로 시프트하여 인증을 진행합니다.
 
 ### AuthResponse
 
@@ -84,11 +104,11 @@ AuthResponse(
 		'name': '신희재', 
 		'major': '컴퓨터공학과'
 	}, 
-	authenticator=<class'DosejongSession'>
+	authenticator='DosejongSession'
 )
 ```
 
-- **success: 인증 서버 정상 동작 여부 **
+- **success: 인증 서버 정상 동작 여부**
   - 해당 인증 절차에 대하여 서버는 정상적인 결과를 반환하였습니다.
   - Value: True / False
 
@@ -105,13 +125,55 @@ AuthResponse(
   - Value: string
 - **body: 메타데이터**
   - 인증 결과에 관련된 메타데이터를 포함합니다.
-  - 인증 실패시의 보다 정확한 실패 사유, 메소드에 따라 
-    이름/학번 등의 추가 정보 수집이 가능할 경우, 해당 필드에 함께 반환됩니다.
+    - 인증 실패시의 보다 정확한 실패 사유 
+    - 이름/학번/학년/재학 상태 등의 추가 정보
   - Value: dict
 - **authenticator: 해당 인증에 사용된 Authenticator 클래스**
+
+
+
+# Sejong Auth API
+
+Java, Node 등 다른 언어를 사용중이신 학우분들을 위해 저희들이 개발한 REST API를 사용하실 수 있습니다.
+
+* **단, 해당 API의 경우, 지속적인 지원을 보장할 수 없습니다.**
+
+### Request
+
+**method**의 경우, 기존에 사용가능한 메소드를 "Manual", "DosejongSession"과 같은 형식으로 그대로 입력해주시면 됩니다. 복수의 메소드에 대한 순차적인 호출은 현재 지원되지 않습니다.
+
+```javascript
+POST https://auth.imsejong.com/auth HTTP/1.1
+Host: auth.imsejong.com
+{
+    "id": "<학번>",
+    "pw": "<비밀번호>",
+    "method": "<사용하고자 하는 메소드>"
+}
+```
+
+### Response
+
+```javascript
+{
+    "msg": "success",
+    "result": {
+        "authenticator": "DosejongSession",
+        "body": {
+            "major": "컴퓨터공학과",
+            "name": "신희재"
+        },
+        "code": "success",
+        "is_auth": true,
+        "status_code": 200,
+        "success": true
+    }
+}
+```
 
 
 
 # References
 
 - https://pypi.org/project/sejong-univ-auth/
+- https://auth.imsejong.com/
