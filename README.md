@@ -5,7 +5,7 @@
 
 Python이라면 아래와 같은 방법으로 쉽게 구현해보세요!
 
-혹시 다른 언어를 사용하시나요? 그렇다면 [저희들이 직접 개발한 REST API](#Sejong Auth API)를 사용해보세요!
+혹시 다른 언어를 사용하시나요? 그렇다면 [저희들이 직접 개발한 REST API](https://github.com/iml1111/sejong-univ-auth#sejong-auth-api)를 사용해보세요!
 
 ## Easy to install
 
