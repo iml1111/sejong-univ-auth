@@ -4,7 +4,6 @@ Base Authenticator
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
 import requests
-from requests.exceptions import Timeout
 from sejong_univ_auth.config import USER_AGENT, TIMEOUT_SEC
 
 
@@ -33,14 +32,12 @@ class Authenticator(metaclass=ABCMeta):
         self.timeout_sec = timeout_sec
 
     def request(self, url: str, data: dict):
-        try:
-            return requests.post(
-                url=url, data=data,
-                headers=self.header,
-                timeout=self.timeout_sec,
-            )
-        except Timeout:
-            return self._get_timeout_response()
+        return requests.post(
+            url=url, 
+            data=data,
+            headers=self.header,
+            timeout=self.timeout_sec,
+        )
 
     @abstractmethod
     def authenticate(self, id: str, password: str) -> AuthResponse:
