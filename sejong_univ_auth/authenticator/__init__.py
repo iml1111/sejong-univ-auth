@@ -123,10 +123,10 @@ from .dosejong_session import DosejongSession
 from .moodler_session import MoodlerSession
 from .classic_session import ClassicSession
 
-
+# Average Fastest Order
 AUTHENTICATORS = (
     PortalSSOToken,
-    DosejongSession,
-    MoodlerSession,
     ClassicSession,
+    MoodlerSession,
+    DosejongSession,
 )
