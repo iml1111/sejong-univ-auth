@@ -15,10 +15,12 @@ class DosejongSession(Authenticator):
             soup = soup.select('div.info')
             if not soup:
                 return self._auth_failed(is_auth=False)
+            name = soup[0].find('b')
+            major = soup[0].find("small")
             return self._success(
                 body={
-                    'name': soup[0].find('b').get_text().strip(),
-                    'major': soup[0].find("small").get_text().strip().split(" ")[1],
+                    'name': name.get_text().strip(),
+                    'major': major.get_text().strip().split(" ")[1],
                 }
             )
         else:
