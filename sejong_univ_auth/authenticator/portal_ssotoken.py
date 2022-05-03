@@ -67,6 +67,6 @@ class PortalSSOToken(Authenticator):
         pattern = re.search("var result = \'.*\';", response_text)
         return pattern.group()[14:-2] if pattern else None
 
+
 if __name__ == '__main__':
-    a = PortalSSOToken()
-    print(a.authenticate('16011089', '!hkw45799'))
+    pass
