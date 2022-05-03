@@ -15,4 +15,4 @@ from .method import (
 
 
 __AUTHOR__ = "IML"
-__VERSION__ = "0.1.2"
+__VERSION__ = "0.2.1"
