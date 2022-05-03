@@ -24,7 +24,9 @@ class DosejongSession(Authenticator):
                 }
             )
         else:
-            return self._unknown_server_error(status_code=response.status_code)
+            return self._unknown_server_error(
+                status_code=response.status_code
+            )
 
     def _session_request(self, id: str, password: str):
         with requests.session() as s:
@@ -34,5 +36,9 @@ class DosejongSession(Authenticator):
                 timeout=self.timeout_sec,
                 data={'email': id, 'password': password}
             )
-        return s.get('https://do.sejong.ac.kr/')
+        return s.get(
+            'https://do.sejong.ac.kr/',
+            headers=self.header,
+            timeout=self.timeout_sec,
+        )
             
