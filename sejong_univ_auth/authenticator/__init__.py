@@ -85,7 +85,7 @@ class Authenticator(metaclass=ABCMeta):
             code='unknown_issue',
             body=body or {
                     'message': (
-                        '예상된 포맷과 다릅니다. 관리자에게 문의해주세요!'
+                        '모듈이 예상한 포맷과 다릅니다. 관리자에게 문의해주세요!'
                         '[https://github.com/iml1111/sejong-univ-auth/issues]')
                 },
             authenticator=self.__class__.__name__

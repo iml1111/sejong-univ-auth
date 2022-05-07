@@ -8,7 +8,7 @@ class InvalidMethod(Exception):
 
 class ParseError(Exception):
 
-    def __init__(self, expected: bool):
+    def __init__(self, expected: bool = False):
         self.expected = expected
 
     def __str__(self) -> str:
@@ -16,3 +16,9 @@ class ParseError(Exception):
             return "Failed parse user resourse."
         else:
             return "Unknown Website Structure."
+
+
+class AuthFailed(Exception):
+
+    def __str__(self) -> str:
+        return 'Authentication Failed.'
