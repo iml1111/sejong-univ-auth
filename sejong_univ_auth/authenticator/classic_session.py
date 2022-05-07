@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup as bs
 from bs4.element import PageElement
 from sejong_univ_auth.authenticator import Authenticator, AuthResponse
 from sejong_univ_auth.decorator import timeout_handler
-from sejong_univ_auth.exceptions import AuthFailed
+from sejong_univ_auth.exceptions import AuthFailed, ParseError
 
 
 class ClassicSession(Authenticator):
@@ -56,7 +56,10 @@ class ClassicSession(Authenticator):
                 )
             else:
                 text = self.convert_text(soup)
-                raise AuthFailed()
+                if text == '로그인 정보가 올바르지 않습니다.':
+                    raise AuthFailed()
+                else:
+                    raise ParseError(expected=False)
     
     def _get_userinfo(self, content: str):
         soup = bs(content, 'html.parser')
