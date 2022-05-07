@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup as bs
 from bs4.element import PageElement
 from sejong_univ_auth.authenticator import Authenticator, AuthResponse
 from sejong_univ_auth.decorator import timeout_handler
-from sejong_univ_auth.exceptions import ParseError, AuthFailed
+from sejong_univ_auth.exceptions import AuthFailed
 
 
 class ClassicSession(Authenticator):
