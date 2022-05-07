@@ -1,4 +1,4 @@
-# sejong-univ-auth ![Python versions](https://img.shields.io/badge/Python-3.7-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Release](https://img.shields.io/badge/release-0.2.2-red)
+# sejong-univ-auth ![Python versions](https://img.shields.io/badge/Python-3.7-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Release](https://img.shields.io/badge/release-0.3.2-red)
 **Sejong University Member Account Authentication**
 
 세종대학교 구성원인지 확인하기 위한 간편한 인증 라이브러리입니다.
@@ -61,15 +61,20 @@ from sejong_univ_auth import (
 
 - **DosejongSession**
   - dosejong 사이트의 세션 인증 방식입니다.
-  - 이름 및 학번을 추가로 조회할 수 있습니다.
+  - 이름, 학번을 추가로 조회할 수 있습니다.
 
 - **ClassicSession**
   - 대양휴머니티칼리지 사이트의 세션 인증 방식입니다.
-  - 이름, 학번, 학년, 재학상태를 추가로 조회할 수 있습니다.
+  - 함께 조회되는 추가 정보는 다음과 같습니다.
+    - 이름
+    - 학번
+    - 학년
+    - 재학/휴학/수료 상태
+    - 고전 독서 인증 현황
 
 - **MoodlerSession**
   - SJULMS 사이트의 세션 인증 방식입니다.
-  - 이름 및 학번을 추가로 조회할 수 있습니다.
+  - 이름, 학번을 추가로 조회할 수 있습니다.
 
 - **Manual (default)**
   - 현재 구현된 모든 메소드를 평균 실행 속도가 빠른 순서대로 수행합니다.
@@ -167,10 +172,10 @@ Host: auth.imsejong.com
         "is_auth": true,
         "status_code": 200,
         "success": true
-    }
+    },
+    "version": "0.3.2"
 }
 ```
-
 
 
 # References
