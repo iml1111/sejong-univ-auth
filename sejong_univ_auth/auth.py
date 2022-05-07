@@ -7,16 +7,6 @@ from .method import Manual
 from .authenticator import Authenticator, AuthResponse
 from .exceptions import InvalidMethod
 
-method_hint = Optional[Union[
-    Type[Authenticator],
-    Iterable[Type[Authenticator]],
-]]
-
-response_hint = Optional[Union[
-    Type[AuthResponse],
-    List[Type[AuthResponse]]
-]]
-
 def _validate_authenticator(authenticator) -> bool:
     return (
         hasattr(authenticator, '__bases__')
@@ -27,8 +17,8 @@ def _validate_authenticator(authenticator) -> bool:
 def auth(
     id: str,
     password: str,
-    methods: method_hint = Manual
-) -> response_hint:
+    methods=Manual
+):
     if (
         isinstance(methods, Iterable)
         and all([
