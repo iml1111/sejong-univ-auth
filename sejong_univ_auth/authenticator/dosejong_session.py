@@ -36,9 +36,9 @@ class DosejongSession(Authenticator):
                 timeout=self.timeout_sec,
                 data={'email': id, 'password': password}
             )
-        return s.get(
-            'https://do.sejong.ac.kr/',
-            headers=self.header,
-            timeout=self.timeout_sec,
-        )
+            return s.get(
+                'https://do.sejong.ac.kr/',
+                headers=self.header,
+                timeout=self.timeout_sec,
+            )
             
