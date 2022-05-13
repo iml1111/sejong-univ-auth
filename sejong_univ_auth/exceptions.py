@@ -8,7 +8,13 @@ class InvalidMethod(Exception):
 
 class ParseError(Exception):
 
-    def __init__(self, expected: bool):
+    def __init__(self, expected: bool = False):
+        """
+        # expected
+        - true: 파싱에는 실패했지만, 모듈이 예상하고 있는 에러임. 
+            - 대처 가능한 리스폰스 반환
+        - false: 모듈이 예상하지 못한 부분에서 파싱 실패.
+        """
         self.expected = expected
 
     def __str__(self) -> str:
@@ -16,3 +22,9 @@ class ParseError(Exception):
             return "Failed parse user resourse."
         else:
             return "Unknown Website Structure."
+
+
+class AuthFailed(Exception):
+
+    def __str__(self) -> str:
+        return 'Authentication Failed.'
