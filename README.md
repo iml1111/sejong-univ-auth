@@ -1,7 +1,7 @@
 # sejong-univ-auth ![Python versions](https://img.shields.io/badge/Python-3.7-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Release](https://img.shields.io/badge/release-0.3.4-red)
 
 <p align="center">
-  <img width="25%" alt="sejong-univ-auth image" src="https://user-images.githubusercontent.com/29897277/173196001-bf694f6b-46cf-4f3b-800b-433779be65d5.png" >
+  <img width="25%" alt="sejong-univ-auth image" src="https://user-images.githubusercontent.com/29897277/173196807-092b7128-e3af-46e1-9d35-fb3b5b217023.png" >
 	<br> 
 	<b>Sejong University Member Account Authentication</b>
 </p>
