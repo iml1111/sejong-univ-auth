@@ -1,5 +1,12 @@
 # sejong-univ-auth ![Python versions](https://img.shields.io/badge/Python-3.7-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Release](https://img.shields.io/badge/release-0.3.4-red)
-**Sejong University Member Account Authentication**
+
+<p align="center">
+  <img width="25%" alt="sejong-univ-auth image" src="https://user-images.githubusercontent.com/29897277/173196001-bf694f6b-46cf-4f3b-800b-433779be65d5.png" >
+	<br> 
+	<b>Sejong University Member Account Authentication</b>
+</p>
+
+
 
 세종대학교 구성원인지 확인하기 위한 간편한 인증 라이브러리입니다.
 
