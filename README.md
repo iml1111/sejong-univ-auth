@@ -160,11 +160,10 @@ Java, Node 등 다른 언어를 사용중이신 학우분들을 위해 저희들
 
 ```javascript
 POST https://auth.imsejong.com/auth HTTP/1.1
-Host: auth.imsejong.com
+Host: auth.imsejong.com?method=<사용하고자 하는 메소드>
 {
     "id": "<학번>",
-    "pw": "<비밀번호>",
-    "method": "<사용하고자 하는 메소드>"
+    "pw": "<비밀번호>"
 }
 ```
 
