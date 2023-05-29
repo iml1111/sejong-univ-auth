@@ -183,7 +183,7 @@ Host: auth.imsejong.com
         "status_code": 200,
         "success": true
     },
-    "version": "0.3.3"
+    "version": "0.3.4"
 }
 ```
 
