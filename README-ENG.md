@@ -12,10 +12,6 @@ A simple authentication library to verify Sejong University members.
 
 If you're using **Python**, you can easily implement it as shown below!
 
-Using **another programming language**? Try our [custom-developed REST API](https://github.com/iml1111/sejong-univ-auth#sejong-auth-api)!
-
-<br />
-
 ## Easy to install
 
 **Pip**: `pip install sejong-univ-auth`
@@ -144,49 +140,6 @@ AuthResponse(
     - Additional information like name, student ID, year, enrollment status, etc.
   - Value: dict
 - **authenticator: The Authenticator class used for this authentication**
-
-<br />
-
-# Sejong Auth API
-
-For users of other programming languages like Java or Node.js, we provide a custom-developed REST API.
-
-- **Continuous support for this API is not guaranteed.**
-
-### Request
-
-**method**For method, input the existing methods as is, such as "Manual" or "DosejongSession". Sequential invocation of multiple methods is not supported.
-
-```javascript
-POST https://auth.imsejong.com/auth?method=<desired-method> HTTP/1.1
-        Host: auth.imsejong.com
-{
-  "id": "<student-id>",
-        "pw": "<password>"
-}
-
-```
-
-### Response
-
-```javascript
-{
-  "msg": "success",
-          "result": {
-    "authenticator": "DosejongSession",
-            "body": {
-      "major": "Computer Science",
-              "name": "Shin Hee-jae"
-    },
-    "code": "success",
-            "is_auth": true,
-            "status_code": 200,
-            "success": true
-  },
-  "version": "0.3.4"
-}
-
-```
 
 <br />
 
