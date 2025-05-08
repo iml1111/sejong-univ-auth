@@ -11,10 +11,6 @@
 
 **Python**이라면 아래와 같은 방법으로 쉽게 구현해보세요!
 
-혹시 **다른 언어**를 사용하시나요? 그렇다면 [저희들이 직접 개발한 REST API](https://github.com/iml1111/sejong-univ-auth#sejong-auth-api)를 사용해보세요!
-
-<br />
-
 ## Easy to install
 
 **Pip**: `pip install sejong-univ-auth`
@@ -145,47 +141,6 @@ AuthResponse(
     - 이름/학번/학년/재학 상태 등의 추가 정보
   - Value: dict
 - **authenticator: 해당 인증에 사용된 Authenticator 클래스**
-
-<br />
-
-# Sejong Auth API
-
-Java, Node 등 다른 언어를 사용중이신 학우분들을 위해 저희들이 개발한 REST API를 사용하실 수 있습니다.
-
-- **단, 해당 API의 경우, 지속적인 지원을 보장할 수 없습니다.**
-
-### Request
-
-**method**의 경우, 기존에 사용가능한 메소드를 "Manual", "DosejongSession"과 같은 형식으로 그대로 입력해주시면 됩니다. 복수의 메소드에 대한 순차적인 호출은 현재 지원되지 않습니다.
-
-```javascript
-POST https://auth.imsejong.com/auth?method=<사용하고자 하는 메소드> HTTP/1.1
-Host: auth.imsejong.com
-{
-    "id": "<학번>",
-    "pw": "<비밀번호>"
-}
-```
-
-### Response
-
-```javascript
-{
-    "msg": "success",
-    "result": {
-        "authenticator": "DosejongSession",
-        "body": {
-            "major": "컴퓨터공학과",
-            "name": "신희재"
-        },
-        "code": "success",
-        "is_auth": true,
-        "status_code": 200,
-        "success": true
-    },
-    "version": "0.3.4"
-}
-```
 
 <br />
 
