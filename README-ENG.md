@@ -147,13 +147,14 @@ AuthResponse(
 
 If you'd like to contribute, please refer to our guidelines. Thank you! 😀
 
-<p align="center">
-  <a href="https://github.com/iml1111/sejong-univ-auth/graphs/contributors">
-  	<img src="https://contrib.rocks/image?repo=altmshfkgudtjr/python-oauth-kakao" />
-	</a>
-	<br /> 
-</p>
-<br />
+# Disclaimer
+
+This open-source library, sejong-univ-auth (hereinafter referred to as “the Software”), is provided under the following terms:
+1. Distributed under MIT License: This Software is distributed under the MIT License.
+2. No Storage or Transmission of Personal Data: The student ID and password entered by users are not stored or transmitted externally. They are used solely for the purpose of determining authentication status.
+3. Unofficial Implementation: This Software is not based on any official API or authorization from Sejong University. It is an independently developed tool that mimics Sejong University’s web authentication procedures. The Software is not affiliated with or endorsed by Sejong University in any way.
+4. Use at Your Own Risk: The Software is provided “as is”, and the use of this Software is entirely at your own risk. The author shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from the use or misuse of this Software.
+5. Free Usage & Compliance Responsibility: The Software is freely available for use by individuals, companies, and organizations. However, users are solely responsible for ensuring that their use of this Software does not violate any third-party terms of service, policies, or applicable laws. Any legal liability arising from such use rests solely with the user.
 
 # References
 
