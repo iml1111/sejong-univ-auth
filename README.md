@@ -11,6 +11,8 @@
 
 **Python**이라면 아래와 같은 방법으로 쉽게 구현해보세요!
 
+If you have difficulty understanding Korean, please refer to [this document](https://github.com/iml1111/sejong-univ-auth/blob/main/README-ENG.md).
+
 ## Easy to install
 
 **Pip**: `pip install sejong-univ-auth`
